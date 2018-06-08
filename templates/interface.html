@@ -1,0 +1,50 @@
+
+{% extends 'base.html' %}
+
+{% block script %}
+    <script src="/static/js/interface.js"></script>
+{% endblock script%}
+
+
+{% block content %}
+    <div class="row">
+            <div class="col-xs-12 col-md-12 col-lg-5">
+                <div id="editor" style="width:600px; min-height:400px" class="ace_editor">
+if response['status'] != 200:
+    result['status'] = 1
+    result['message'] = "请求失败！"
+
+if 'province' not in response['data']['data']:
+    result['status'] = 2
+    result['message'] = "数据错误！"
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-12 col-lg-2"></div>
+            <div class="col-xs-12 col-md-12 col-lg-5">
+                <div class="row">
+                    <select id="method">
+                        <option value="get">GET</option>
+                        <option value="post">POST</option>
+                        <option value="put">PUT</option>
+                        <option value="delete">DELETE</option>
+                    </select>
+                    <input id="url" placeholder="http://www.testfan.cn/">
+                    <input id="param" type="button" value="param">
+                    <input id="header" type="button" value="header">
+                    <input id="send" type="button" value="send">
+                </div>
+                <div id="h_section" class="row">
+                    <hr>
+                    <label>请求头</label>
+                </div>
+                <div id="p_section" class="row">
+                    <hr>
+                    <label>请求参数</label>
+                </div>
+                <div id="r_section" class="row">
+                    <hr>
+                    <label>响应数据</label>
+                </div>
+            </div>
+        </div>
+{% endblock content%}

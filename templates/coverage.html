@@ -1,0 +1,19 @@
+
+{% extends 'base.html' %}
+
+{% block script %}
+    <script src="/static/js/coverage.js"></script>
+{% endblock script%}
+
+{% block content %}
+    <div class="row">
+        <div class="col-xs-12 col-md-12 col-lg-6">
+            <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+            <div id="line" style="width: 600px;height:400px;"></div>
+        </div>
+        <div class="col-xs-12 col-md-12 col-lg-6">
+            <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+            <div id="branch" style="width: 600px;height:400px;"></div>
+        </div>
+    </div>
+{% endblock content%}

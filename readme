@@ -1,0 +1,2 @@
+cd /d C:\Program Files\MongoDB\Server\3.6\bin
+mongod --dbpath "C:\Users\40556\mongodb\data"  --logpath "C:\Users\40556\mongodb\log\log.txt"
