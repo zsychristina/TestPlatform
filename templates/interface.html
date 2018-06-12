@@ -1,4 +1,3 @@
-
 {% extends 'base.html' %}
 
 {% block script %}
@@ -7,8 +6,11 @@
 
 
 {% block content %}
-    <div class="row">
-            <div class="col-xs-12 col-md-12 col-lg-5">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-xs-12 col-md-6 col-lg-5">
+                <div>这里是写代码的</div>
                 <div id="editor" style="width:600px; min-height:400px" class="ace_editor">
 if response['status'] != 200:
     result['status'] = 1
@@ -19,8 +21,9 @@ if 'province' not in response['data']['data']:
     result['message'] = "数据错误！"
                 </div>
             </div>
-            <div class="col-xs-12 col-md-12 col-lg-2"></div>
-            <div class="col-xs-12 col-md-12 col-lg-5">
+            <!--//缓冲块，避免过度拥挤-->
+            <div class="col-xs-12 col-md-6 col-lg-2"></div>
+            <div class="col-xs-12 col-md-6 col-lg-5">
                 <div class="row">
                     <select id="method">
                         <option value="get">GET</option>
@@ -47,4 +50,6 @@ if 'province' not in response['data']['data']:
                 </div>
             </div>
         </div>
+    </div>
+
 {% endblock content%}

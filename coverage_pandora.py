@@ -8,6 +8,7 @@ import requests
 
 from pyxml2dict import XML2Dict
 
+#调用命令行方法
 def command(cmd):
     # result = os.system(cmd)
     # if result == 0:
@@ -16,12 +17,12 @@ def command(cmd):
     #     return False
     # status, output = commands.getstatusoutput(cmd)
     # return status, output
-    process = subprocess.Popen(cmd)
-    process.wait()
+    process = subprocess.Popen(cmd)     #新起一个进程执行cmd命令
+    process.wait()                      #阻塞调用，hang住，直到cmd运行完毕
     return process.returncode#, process.communicate()
 
 def run_cases(path):
-    file = os.path.join(path, "test.xml")
+    file = os.path.join(path, "text.xml")
     cmd = "nosetests --where={0} \
     --with-coverage --cover-erase \
     --cover-branches --cover-xml \
@@ -32,7 +33,8 @@ def parse_report(name):
     file = open(name)
     xml = file.read()
     file.close()
-    data = XML2Dict().fromstring(xml)
+    data = XML2Dict().fromstring(xml)       #将xml格式转化为字典格式
+    #提取json数据
     result = {
         "branch": {
             "cover": data['coverage']['@branches-covered'],
@@ -47,6 +49,7 @@ def parse_report(name):
     }
     return result
 
+
 def push_report(data):
     url = "http://127.0.0.1:9999/api/v1/insert"
     data.setdefault('collection', 'coverage')
@@ -55,7 +58,7 @@ def push_report(data):
     print response.json()
 
 if __name__ == '__main__':
-    path = "C:/Users/40556/PycharmProjects/lesson07/unit"
+    path = "C:/Users/chris/PycharmProjects/lesson7/unit/"
     file = run_cases(path)
     data = parse_report(file)
     push_report(data)

@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block script %}
+    <script src="/static/js/performance.js"></script>
+{% endblock script%}
+
+
+{% block content %}
+    <div class="container">
+
+        <div class="row">
+            <div class="col-xs-12 col-md-6 col-lg-5">
+                <div>这里是写代码的</div>
+                <div id="editor" style="width:600px; min-height:400px" class="ace_editor">
+from locust import HttpLocust, TaskSet, task
+
+class UserBehavior(TaskSet):
+
+    @task(1)
+    def index(self):
+        self.client.get("http://www.testfan.cn/")
+
+    @task(2)
+    def search(self):
+        self.client.get("http://www.testfan.cn/list/2/220.htm")
+
+class WebsiteUser(HttpLocust):
+    task_set = UserBehavior
+    min_wait = 5000
+    max_wait = 9000
+                </div>
+            </div>
+            <!--//缓冲块，避免过度拥挤-->
+            <div class="col-xs-12 col-md-6 col-lg-2"></div>
+            <div class="col-xs-12 col-md-6 col-lg-5">
+                <div class="row">
+                    <div class="col-xs-12 col-md-6 col-lg-2">域名</div>
+                    <div class="col-xs-12 col-md-6 col-lg-2"><input id="host" type="text" placeholder="http://www.testfan.cn/"></div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-6 col-lg-2">用户</div>
+                    <div class="col-xs-12 col-md-6 col-lg-2"><input id="user" type="text"></div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-6 col-lg-2">QPS</div>
+                    <div class="col-xs-12 col-md-6 col-lg-2"><input id="qps" type="text"></div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-6 col-lg-2">请求数</div>
+                    <div class="col-xs-12 col-md-6 col-lg-2"><input id="number" type="text"></div>
+                </div>
+                <input id="send" type="button" value="开始压测">
+            </div>
+        </div>
+    </div>
+
+{% endblock content%}

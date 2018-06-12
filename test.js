@@ -1,14 +1,8 @@
-
-// Simple Javascript example
-
+console.log('Loading a web page');
 var page = require('webpage').create();
-
-var url = 'http://www.testfan.cn/list/2/220.htm';
+var url = 'http://www.testfan.com/';
 page.open(url, function (status) {
   //Page is loaded!
-    var start = performance.timing.responseStart;
-    var stop = performance.timing.domComplete;
-    console.log(stop - start);
-    page.render('python.png');
-    phantom.exit();
+  page.render('python.jpg');
+  phantom.exit();
 });

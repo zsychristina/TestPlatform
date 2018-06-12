@@ -1,27 +1,36 @@
-
 {% extends 'base.html' %}
 
 {% block script %}
     <script src="/static/js/function.js"></script>
 {% endblock script%}
 
-
 {% block content %}
-    <div class="row">
-        <select id="option">
-            <option value="browser">打开网址</option>
-            <option value="find">查找元素</option>
-            <option value="keys">输入文本</option>
-            <option value="action">执行动作</option>
-        </select>
-        <input id="command" type="button" value="添加">
-    </div>
+        <div class="container">
 
-    <div class="row">
-        <div id="cases"></div>
-    </div>
+        <div class="row" style="width: 600px;height:500px;>
+            <div class="col-xs-12 col-md-6 col-lg-5">
+                <div class="row">
+                    <select id="option">
+                        <option value="browser">打开网址</option>
+                        <option value="find">查找元素</option>
+                        <option value="keys">输入文本</option>
+                        <option value="action">执行动作</option>
+                    </select>
+                    <input id="command" type="button" value="添加">
+                </div>
+                <div class="row" id="case">
 
-    <div class="row">
-        <input id="run" type="button" value="运行">
+                </div>
+
+
+            </div>
+            <!--//缓冲块，避免过度拥挤-->
+            <div class="col-xs-12 col-md-6 col-lg-2"></div>
+            <div class="col-xs-12 col-md-6 col-lg-5">
+                <div>
+
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock content%}

@@ -1,0 +1,4 @@
+"Method","Name","# requests","# failures","Median response time","Average response time","Min response time","Max response time","Average Content Size","Requests/s"
+"GET","/",2,0,41,42,41,43,61295,0.14
+"GET","/list/2/220.htm",2,0,42,44,42,47,18472,0.14
+"None","Total",4,0,42,43,41,47,39883,0.28

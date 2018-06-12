@@ -71,7 +71,7 @@ class Function(object):
 
     def __init__(self, commands):
         self.commands = commands
-        self.driver = webdriver.Chrome(executable_path='C:\Python27\chromedriver.exe')
+        self.driver = webdriver.Chrome(executable_path='C:\Users\chris\Desktop\chromedriver_win32\chromedriver.exe')
 
     def browser(self, params):
         url = params.get('url', "http://www.baidu.com")
@@ -80,7 +80,15 @@ class Function(object):
     def find(self, params):
         by = params.get('by')
         selector = params.get('value')
-        return self.driver.find_element(by, selector)
+        if by == 'name':
+            section = self.driver.find_element_by_name(selector)
+        elif by == 'xpath':
+            section = self.driver.find_element_by_xpath(selector)
+        elif by == 'css selector':
+            section = self.driver.find_element_by_css_selector(selector)
+        else:
+            section = self.driver.find_elements_by_class_name(selector)
+        return section
 
     def keys(self, result, params):
         text = params.get('value')
