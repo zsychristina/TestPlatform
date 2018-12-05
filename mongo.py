@@ -62,4 +62,4 @@ if __name__ == '__main__':
     #     'salary':'high'
     # })
     # mongo.delete("testfan","user",{'name':'damao'})
-    print mongo.search("testfan","user",{'education':'doctor'})
+    print (mongo.search("testfan","user",{'education':'doctor'}))

@@ -15,6 +15,10 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
+@app.route('/login')
+def login():
+    return render_template("login.html")
+
 
 @app.route('/coverage')
 def coverage():
@@ -29,7 +33,7 @@ def interface():
 @app.route('/interface/handler', methods=['POST'])
 def interface_handler():
     data = request.get_json()
-    print data
+    print (data)
     url = data.pop('url')
     method = data.pop('method')
     payload = data.pop('param')
@@ -40,7 +44,7 @@ def interface_handler():
     module = __import__("requests")
     http = getattr(module, method)
     response = http(url,params=payload,headers=headers)
-    print response
+    print (response)
     status = response.status_code
     data = response.json()
 
@@ -79,7 +83,7 @@ def performance():
 @app.route('/performance/handler', methods=['POST'])
 def performance_handler():
     data = request.get_json()
-    print data
+    print (data)
     host = data.pop('host')
     user = data.pop('user')
     qps = data.pop('qps')
